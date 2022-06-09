@@ -1,0 +1,39 @@
+﻿@using Bitirme.Models
+@model BirimMaliyet
+@{
+    ViewBag.Title = "Create";
+}
+
+<form class=" form-group" method="post">
+
+    <div>
+        @Html.Label("Urun")
+        @Html.DropDownListFor(ba => ba.Urun_ID, (List<SelectListItem>)ViewBag.Urunler, new { @class = "form-control" })
+     
+
+    </div>
+       
+    <div>
+        @Html.Label("Dimmg")
+        @Html.TextBoxFor(ba => ba.Dimmg, new { @class = "form-control" })
+
+    </div>
+    <div>
+        @Html.Label("Dig")
+        @Html.TextBoxFor(ba => ba.Dig, new { @class = "form-control" })
+
+    </div>
+    <div>
+        @Html.Label("Dağitim Ölçüsü")
+        @Html.DropDownListFor(ba => ba.BirimDagitimOlcu, (List<SelectListItem>)ViewBag.Dagitim, new { @class = "form-control" })
+
+
+    </div>
+
+
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Birime Ekle</button>
+    </div>
+</form>
+
+

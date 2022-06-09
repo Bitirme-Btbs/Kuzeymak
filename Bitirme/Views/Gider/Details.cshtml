@@ -1,0 +1,29 @@
+﻿@using Bitirme.Models
+@model Gider
+@{
+    ViewBag.Title = "Details";
+}
+
+@using (Html.BeginForm("Edit", "Gider", FormMethod.Post))
+{
+
+<div class="form-group">
+    @Html.LabelFor(ba => ba.GiderId)
+    @Html.TextBoxFor(ba => ba.GiderId)
+    <br />
+    @Html.LabelFor(ba => ba.HesapKodu)
+    @Html.TextBoxFor(ba => ba.HesapKodu)
+    <br />
+    @Html.LabelFor(ba => ba.HesapAd)
+    @Html.TextBoxFor(ba => ba.HesapAd)
+    <br />
+    @Html.LabelFor(ba => ba.Tutar)
+    @Html.TextBoxFor(ba => ba.Tutar)
+</div>
+
+    <div>
+        <button class="btn btn-warning">Gider Güncelle   </button>
+    </div>
+}
+
+

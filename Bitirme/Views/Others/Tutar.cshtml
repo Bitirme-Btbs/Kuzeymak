@@ -1,0 +1,47 @@
+﻿@using Bitirme.Models
+@model List<GenelTutar>
+@{
+    ViewBag.Title = "Tutar";
+}
+
+<table id="mytbl" class="table table-striped">
+    <thead>
+        <tr>
+
+            <th scope="col">Giderler</th>
+
+            <th scope="col">Faaliyet Adı</th>
+            <th scope="col">Kaynak Maliyet Etkeni</th>
+            <th scope="col">Tutar</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            var sayi = string.Format("{0:N2}", item.Geneltutar1);
+            <tr>
+                
+                
+                <td>@item.HesapKodu @item.HesapAd </td>
+              
+                <td>@item.FaaliyetAd </td>
+                <td>@item.KMEAd</td>
+                <td>@sayi </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-html5-1.3.1/b-print-1.3.1/r-2.1.1/rg-1.0.0/datatables.min.css" />
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/b-1.3.1/b-html5-1.3.1/b-print-1.3.1/r-2.1.1/rg-1.0.0/datatables.min.js"></script>
+<script>
+    $('#mytbl').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+        }
+    });
+
+</script>
+

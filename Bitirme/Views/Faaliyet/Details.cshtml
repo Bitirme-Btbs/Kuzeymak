@@ -1,0 +1,22 @@
+﻿@using Bitirme.Models
+@model Faaliyet
+@{
+    ViewBag.Title = "Details";
+}
+
+@using (Html.BeginForm("Edit", "Faaliyet", FormMethod.Post))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(ba => ba.FaaliyetId)
+        @Html.TextBoxFor(ba => ba.FaaliyetId)
+        <br />
+        @Html.LabelFor(ba => ba.FaaliyetAd)
+        @Html.TextBoxFor(ba => ba.FaaliyetAd)
+    </div>
+
+    <div>
+        <button class="btn btn-warning">Faaliyet Güncelle   </button>
+    </div>
+}
+

@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      
+        <ul class="nav navbar-nav">
+
+            <li>@Html.ActionLink("Faaliyet", "Index", "Faaliyet")</li>
+            <li>@Html.ActionLink("Kaynak Maliyet Etkeni", "Index", "KaynakMaliyetEtken")</li>
+            <li>@Html.ActionLink("Gider", "Index", "Gider")</li>
+            <li>@Html.ActionLink("Maliyet", "Index", "Maliyet")</li>
+            @*<li>@Html.ActionLink("Oran", "Oran", "Others")</li>*@
+            <li>@Html.ActionLink("Tutar", "Tutar", "Others")</li>
+            <li>@Html.ActionLink("Faaliyetlerin Toplam Maliyeti", "FaaliyetToplam", "Others")</li>
+
+            @*<li>@Html.ActionLink("Ürün Adet", "Index", "UrunMaliyet")</li>*@
+
+            <li>@Html.ActionLink("Ürünler", "Index", "Urun")</li>
+
+            <li>@Html.ActionLink("Faaliyet Maliyet Etkeni", "Index", "DagıtımOlcu")</li>
+            <li>@Html.ActionLink("Ürün Maliyeti", "Index", "MaliyetUrun")</li>
+
+            <li>@Html.ActionLink("Dagıtım İlişki", "Index", "DagitimOlcuFaaliyet")</li>
+            <li>@Html.ActionLink("Ürün Faaliyet Tutar", "Index", "UrunFaaliyetTutar")</li>
+            <li>@Html.ActionLink("Maliyet Birim", "Index", "BirimMaliyeti")</li>
+            <li>@Html.ActionLink("Birim Maliyet", "BirimMaliyetTutar", "BirimMaliyeti")</li>
+
+
+
+
+        </ul>
+            </div>
+ 
+
+        @RenderBody()
+        
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

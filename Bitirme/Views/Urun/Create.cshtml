@@ -1,0 +1,20 @@
+﻿@using Bitirme.Models
+@model Urun
+@{
+    ViewBag.Title = "Create";
+}
+
+<form class=" form-group" method="post">
+    <div>
+        @Html.Label("Ürün Adı")
+        @Html.TextBoxFor(ba => ba.UrunAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(ba => ba.UrunAd,"",new { @style = "color:red" })
+    </div>
+
+
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Urun Ekle</button>
+    </div>
+</form>
+
+

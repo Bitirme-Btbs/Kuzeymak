@@ -1,0 +1,21 @@
+﻿@using Bitirme.Models
+@model Urun
+@{
+    ViewBag.Title = "Details";
+}
+
+@using (Html.BeginForm("Edit", "Urun", FormMethod.Post))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(ba => ba.UrunId)
+        @Html.TextBoxFor(ba => ba.UrunId)
+        <br />
+        @Html.LabelFor(ba => ba.UrunAd)
+        @Html.TextBoxFor(ba => ba.UrunAd)
+    </div>
+
+    <div>
+        <button class="btn btn-warning">Urun Güncelle   </button>
+    </div>
+}

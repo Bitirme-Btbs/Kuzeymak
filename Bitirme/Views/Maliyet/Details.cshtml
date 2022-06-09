@@ -1,0 +1,47 @@
+﻿
+
+@using Bitirme.Models
+@model Maliyet
+
+@using (Html.BeginForm("Edit", "Maliyet", FormMethod.Post))
+{
+
+<div class="form-group">
+    <div>
+        @Html.LabelFor(ba => ba.MaliyetId)
+        @Html.TextBoxFor(ba => ba.MaliyetId)
+
+
+    </div>
+    <div>
+        <label>Gider</label>
+        @Html.DropDownListFor(ba => ba.Gider.GiderId, (List<SelectListItem>)ViewBag.Mgider, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Faaliyet</label>
+        @Html.DropDownListFor(ba => ba.Faaliyet.FaaliyetId, (List<SelectListItem>)ViewBag.Mfaaliyet, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Kaynak Maliyet Etken</label>
+        @Html.DropDownListFor(ba => ba.KaynakMaliyetEtken.KMEId, (List<SelectListItem>)ViewBag.Mkme, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Onay</label>
+        @Html.DropDownListFor(ba => ba.Onay, new List<SelectListItem>() { new SelectListItem() { Text = "Aktif", Value = "True" }, new SelectListItem() { Text = "Pasif", Value = "False" } }, new { @class = "form-control" })
+
+    </div>
+    @*<div>
+        <label>Adet</label>
+        <input type="number" name="Adet" class="form-control" placeholder="Adet" />
+    </div>*@
+    <div>
+        <label>Adet</label>
+        @Html.TextBoxFor(ba => ba.Adet, new { @class = "form-control" })
+    </div>
+    <br />
+</div>
+        <div style="margin-top:15px">
+            <button class="btn btn-info">Ekle</button>
+        </div>
+        }
+

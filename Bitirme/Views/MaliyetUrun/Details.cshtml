@@ -1,0 +1,40 @@
+﻿@using Bitirme.Models
+@model MaliyetUrun
+@{
+    ViewBag.Title = "Edit";
+}
+@using (Html.BeginForm("Edit", "MaliyetUrun", FormMethod.Post))
+{
+
+
+    <div>
+        @Html.LabelFor(ba => ba.MaliyetUrunId)
+        @Html.TextBoxFor(ba => ba.MaliyetUrunId)
+
+
+    </div>
+
+    <div>
+        <label>Urun</label>
+        @Html.DropDownListFor(ba => ba.Urun.UrunId, (List<SelectListItem>)ViewBag.Urunler, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Dağıtım Ölçüsü</label>
+        @Html.DropDownListFor(ba => ba.DagıtımOlcu.DagıtımOlcu_Id, (List<SelectListItem>)ViewBag.Do, new { @class = "form-control" })
+    </div>
+
+
+    @*<div>
+        <label>Adet</label>
+        <input name="UrunDagitimAdet" class="form-control" placeholder="Adet" />
+    </div>*@
+    <div>
+        <label>Adet</label>
+        @Html.TextBoxFor(ba => ba.UrunDagitimAdet, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Ekle</button>
+    </div>
+}
+
+

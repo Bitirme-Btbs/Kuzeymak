@@ -1,0 +1,22 @@
+﻿@using Bitirme.Models
+@model DagıtımOlcu
+@{
+    ViewBag.Title = "Details";
+}
+
+@using (Html.BeginForm("Edit", "DagıtımOlcu", FormMethod.Post))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(ba => ba.DagıtımOlcu_Id)
+        @Html.TextBoxFor(ba => ba.DagıtımOlcu_Id)
+        <br />
+        @Html.LabelFor(ba => ba.DagıtımOlcu_Ad)
+        @Html.TextBoxFor(ba => ba.DagıtımOlcu_Ad)
+    </div>
+
+    <div>
+        <button class="btn btn-warning">Faaliyet Maliyet Etkeni Güncelle   </button>
+    </div>
+}
+

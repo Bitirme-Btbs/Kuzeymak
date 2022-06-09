@@ -1,0 +1,1275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KuzeyMakModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BirimMaliyet">
+          <Key>
+            <PropertyRef Name="BM_Id" />
+          </Key>
+          <Property Name="BM_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Urun_ID" Type="int" />
+          <Property Name="Dimmg" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Dig" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BirimDagitimOlcu" Type="int" />
+        </EntityType>
+        <EntityType Name="DagıtımOlcu">
+          <Key>
+            <PropertyRef Name="DagıtımOlcu_Id" />
+          </Key>
+          <Property Name="DagıtımOlcu_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DagıtımOlcu_Ad" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="DagitimOlcuFaaliyetiliski">
+          <Key>
+            <PropertyRef Name="Df_Id" />
+          </Key>
+          <Property Name="Df_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DagitimOlcuId" Type="int" />
+          <Property Name="FaaliyetId" Type="int" />
+        </EntityType>
+        <EntityType Name="Faaliyet">
+          <Key>
+            <PropertyRef Name="FaaliyetId" />
+          </Key>
+          <Property Name="FaaliyetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FaaliyetAd" Type="nvarchar" MaxLength="90" />
+        </EntityType>
+        <EntityType Name="Gider">
+          <Key>
+            <PropertyRef Name="GiderId" />
+          </Key>
+          <Property Name="GiderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HesapKodu" Type="varchar" MaxLength="90" />
+          <Property Name="HesapAd" Type="varchar" MaxLength="90" />
+          <Property Name="Tutar" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="KaynakMaliyetEtken">
+          <Key>
+            <PropertyRef Name="KMEId" />
+          </Key>
+          <Property Name="KMEId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KMEAd" Type="varchar" MaxLength="90" />
+        </EntityType>
+        <EntityType Name="Maliyet">
+          <Key>
+            <PropertyRef Name="MaliyetId" />
+          </Key>
+          <Property Name="MaliyetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GiderId" Type="int" />
+          <Property Name="FaaliyetId" Type="int" />
+          <Property Name="KMEId" Type="int" />
+          <Property Name="Onay" Type="bit" />
+          <Property Name="Adet" Type="int" />
+        </EntityType>
+        <EntityType Name="MaliyetEndirektUretim">
+          <Key>
+            <PropertyRef Name="EUM_Id" />
+          </Key>
+          <Property Name="EUM_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Urun_Id" Type="int" />
+          <Property Name="Toplam" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="MaliyetUrun">
+          <Key>
+            <PropertyRef Name="MaliyetUrunId" />
+          </Key>
+          <Property Name="MaliyetUrunId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunId" Type="int" />
+          <Property Name="DagitimOlcuId" Type="int" />
+          <Property Name="UrunDagitimAdet" Type="decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="TblBirimMaliyetTutar">
+          <Key>
+            <PropertyRef Name="BMT_ID" />
+          </Key>
+          <Property Name="BMT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Urunler" Type="nvarchar(max)" />
+          <Property Name="EndirekUM" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Dimmg" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Dig" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ToplamMaliyet" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BirimMaliyet" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TblToplamMaliyet">
+          <Key>
+            <PropertyRef Name="TMaliyet_ID" />
+          </Key>
+          <Property Name="TMaliyet_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunAdi" Type="nvarchar(max)" />
+          <Property Name="EndirektToplami" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Dimmg" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Dig" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ToplamMaliyeti" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TutarUrunFaaliyet">
+          <Key>
+            <PropertyRef Name="TUF_ID" />
+          </Key>
+          <Property Name="TUF_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Urun" Type="nvarchar(max)" />
+          <Property Name="Faaliyet" Type="nvarchar(max)" />
+          <Property Name="TutarTUF" Type="decimal" Precision="18" Scale="5" />
+        </EntityType>
+        <EntityType Name="Urun">
+          <Key>
+            <PropertyRef Name="UrunId" />
+          </Key>
+          <Property Name="UrunId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunAd" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KuzeyMak.dbo.BirimMaliyetTutar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BirimMaliyetTutar">
+          <Key>
+            <PropertyRef Name="UrunId" />
+            <PropertyRef Name="MaliyetUrunId" />
+          </Key>
+          <Property Name="UrunId" Type="int" Nullable="false" />
+          <Property Name="UrunAd" Type="varchar(max)" />
+          <Property Name="EndirektToplam" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Dimmg" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Dig" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ToplamMaliyet" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="BirimDagitimOlcu" Type="int" />
+          <Property Name="MaliyetUrunId" Type="int" Nullable="false" />
+          <Property Name="Expr1" Type="int" />
+          <Property Name="DagitimOlcuId" Type="int" />
+          <Property Name="UrunDagitimAdet" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="BirimMaliyet" Type="decimal" Precision="38" Scale="17" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KuzeyMak.dbo.EndirektUretimMaliyeti' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EndirektUretimMaliyeti">
+          <Key>
+            <PropertyRef Name="UrunId" />
+          </Key>
+          <Property Name="UrunId" Type="int" Nullable="false" />
+          <Property Name="Toplam" Type="decimal" Precision="38" Scale="6" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KuzeyMak.dbo.GenelTutar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GenelTutar">
+          <Key>
+            <PropertyRef Name="MaliyetId" />
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="Expr2" />
+          </Key>
+          <Property Name="MaliyetId" Type="int" Nullable="false" />
+          <Property Name="Oran" Type="decimal" Precision="29" Scale="13" />
+          <Property Name="Expr1" Type="int" Nullable="false" />
+          <Property Name="GiderId" Type="int" />
+          <Property Name="FaaliyetAd" Type="nvarchar" MaxLength="90" />
+          <Property Name="FaaliyetId" Type="int" />
+          <Property Name="KMEId" Type="int" />
+          <Property Name="KMEAd" Type="varchar" MaxLength="90" />
+          <Property Name="Onay" Type="bit" />
+          <Property Name="Adet" Type="int" />
+          <Property Name="Expr2" Type="int" Nullable="false" />
+          <Property Name="HesapKodu" Type="varchar" MaxLength="90" />
+          <Property Name="HesapAd" Type="varchar" MaxLength="90" />
+          <Property Name="Tutar" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Geneltutar" Type="decimal" Precision="38" Scale="6" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KuzeyMak.dbo.Oran' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Oran">
+          <Key>
+            <PropertyRef Name="MaliyetId" />
+          </Key>
+          <Property Name="MaliyetId" Type="int" Nullable="false" />
+          <Property Name="Oran" Type="decimal" Precision="29" Scale="13" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KuzeyMak.dbo.OranUrunDagitim' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="OranUrunDagitim">
+          <Key>
+            <PropertyRef Name="MaliyetUrunId" />
+          </Key>
+          <Property Name="MaliyetUrunId" Type="int" Nullable="false" />
+          <Property Name="oran" Type="decimal" Precision="38" Scale="20" />
+          <Property Name="DagitimOlcuId" Type="int" />
+          <Property Name="UrunId" Type="int" />
+          <Property Name="UrunAd" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KuzeyMak.dbo.ToplamFaaliyetTutar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ToplamFaaliyetTutar">
+          <Key>
+            <PropertyRef Name="FaaliyetId" />
+          </Key>
+          <Property Name="FaaliyetId" Type="int" Nullable="false" />
+          <Property Name="toplam" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="FaaliyetAd" Type="nvarchar" MaxLength="90" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KuzeyMak.dbo.ToplamMaliyet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ToplamMaliyet">
+          <Key>
+            <PropertyRef Name="UrunId" />
+          </Key>
+          <Property Name="UrunId" Type="int" Nullable="false" />
+          <Property Name="UrunAd" Type="varchar(max)" />
+          <Property Name="EndirektToplam" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Dimmg" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Dig" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ToplamMaliyet" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="BirimDagitimOlcu" Type="int" />
+          <Property Name="Urun_ID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KuzeyMak.dbo.UrunFaaliyetTutar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UrunFaaliyetTutar">
+          <Key>
+            <PropertyRef Name="FaaliyetId" />
+          </Key>
+          <Property Name="UrunAd" Type="varchar(max)" />
+          <Property Name="FaaliyetAd" Type="nvarchar" MaxLength="90" />
+          <Property Name="FaaliyetId" Type="int" Nullable="false" />
+          <Property Name="tutar" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="Number" Type="bigint" />
+        </EntityType>
+        <Association Name="FK_BirimMaliyet_DagıtımOlcu">
+          <End Role="DagıtımOlcu" Type="Self.DagıtımOlcu" Multiplicity="0..1" />
+          <End Role="BirimMaliyet" Type="Self.BirimMaliyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DagıtımOlcu">
+              <PropertyRef Name="DagıtımOlcu_Id" />
+            </Principal>
+            <Dependent Role="BirimMaliyet">
+              <PropertyRef Name="BirimDagitimOlcu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BirimMaliyet_Urun">
+          <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
+          <End Role="BirimMaliyet" Type="Self.BirimMaliyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urun">
+              <PropertyRef Name="UrunId" />
+            </Principal>
+            <Dependent Role="BirimMaliyet">
+              <PropertyRef Name="Urun_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DagitimOlcuFaaliyetiliski_DagıtımOlcu">
+          <End Role="DagıtımOlcu" Type="Self.DagıtımOlcu" Multiplicity="0..1" />
+          <End Role="DagitimOlcuFaaliyetiliski" Type="Self.DagitimOlcuFaaliyetiliski" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DagıtımOlcu">
+              <PropertyRef Name="DagıtımOlcu_Id" />
+            </Principal>
+            <Dependent Role="DagitimOlcuFaaliyetiliski">
+              <PropertyRef Name="DagitimOlcuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DagitimOlcuFaaliyetiliski_Faaliyet">
+          <End Role="Faaliyet" Type="Self.Faaliyet" Multiplicity="0..1" />
+          <End Role="DagitimOlcuFaaliyetiliski" Type="Self.DagitimOlcuFaaliyetiliski" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faaliyet">
+              <PropertyRef Name="FaaliyetId" />
+            </Principal>
+            <Dependent Role="DagitimOlcuFaaliyetiliski">
+              <PropertyRef Name="FaaliyetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Maliyet_Faaliyet">
+          <End Role="Faaliyet" Type="Self.Faaliyet" Multiplicity="0..1" />
+          <End Role="Maliyet" Type="Self.Maliyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faaliyet">
+              <PropertyRef Name="FaaliyetId" />
+            </Principal>
+            <Dependent Role="Maliyet">
+              <PropertyRef Name="FaaliyetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Maliyet_Gider">
+          <End Role="Gider" Type="Self.Gider" Multiplicity="0..1" />
+          <End Role="Maliyet" Type="Self.Maliyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gider">
+              <PropertyRef Name="GiderId" />
+            </Principal>
+            <Dependent Role="Maliyet">
+              <PropertyRef Name="GiderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Maliyet_KaynakMaliyetEtken">
+          <End Role="KaynakMaliyetEtken" Type="Self.KaynakMaliyetEtken" Multiplicity="0..1" />
+          <End Role="Maliyet" Type="Self.Maliyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KaynakMaliyetEtken">
+              <PropertyRef Name="KMEId" />
+            </Principal>
+            <Dependent Role="Maliyet">
+              <PropertyRef Name="KMEId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaliyetUrun_DagıtımOlcu">
+          <End Role="DagıtımOlcu" Type="Self.DagıtımOlcu" Multiplicity="0..1" />
+          <End Role="MaliyetUrun" Type="Self.MaliyetUrun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DagıtımOlcu">
+              <PropertyRef Name="DagıtımOlcu_Id" />
+            </Principal>
+            <Dependent Role="MaliyetUrun">
+              <PropertyRef Name="DagitimOlcuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaliyetUrun_Urun">
+          <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
+          <End Role="MaliyetUrun" Type="Self.MaliyetUrun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urun">
+              <PropertyRef Name="UrunId" />
+            </Principal>
+            <Dependent Role="MaliyetUrun">
+              <PropertyRef Name="UrunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="BirimMaliyetSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Endirekt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ProductPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPToplamMaliyet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="KuzeyMakModelStoreContainer">
+          <EntitySet Name="BirimMaliyet" EntityType="Self.BirimMaliyet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DagıtımOlcu" EntityType="Self.DagıtımOlcu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DagitimOlcuFaaliyetiliski" EntityType="Self.DagitimOlcuFaaliyetiliski" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Faaliyet" EntityType="Self.Faaliyet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gider" EntityType="Self.Gider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KaynakMaliyetEtken" EntityType="Self.KaynakMaliyetEtken" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Maliyet" EntityType="Self.Maliyet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaliyetEndirektUretim" EntityType="Self.MaliyetEndirektUretim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaliyetUrun" EntityType="Self.MaliyetUrun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblBirimMaliyetTutar" EntityType="Self.TblBirimMaliyetTutar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblToplamMaliyet" EntityType="Self.TblToplamMaliyet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TutarUrunFaaliyet" EntityType="Self.TutarUrunFaaliyet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Urun" EntityType="Self.Urun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BirimMaliyetTutar" EntityType="Self.BirimMaliyetTutar" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BirimMaliyetTutar].[UrunId] AS [UrunId], 
+    [BirimMaliyetTutar].[UrunAd] AS [UrunAd], 
+    [BirimMaliyetTutar].[EndirektToplam] AS [EndirektToplam], 
+    [BirimMaliyetTutar].[Dimmg] AS [Dimmg], 
+    [BirimMaliyetTutar].[Dig] AS [Dig], 
+    [BirimMaliyetTutar].[ToplamMaliyet] AS [ToplamMaliyet], 
+    [BirimMaliyetTutar].[BirimDagitimOlcu] AS [BirimDagitimOlcu], 
+    [BirimMaliyetTutar].[MaliyetUrunId] AS [MaliyetUrunId], 
+    [BirimMaliyetTutar].[Expr1] AS [Expr1], 
+    [BirimMaliyetTutar].[DagitimOlcuId] AS [DagitimOlcuId], 
+    [BirimMaliyetTutar].[UrunDagitimAdet] AS [UrunDagitimAdet], 
+    [BirimMaliyetTutar].[BirimMaliyet] AS [BirimMaliyet]
+    FROM [dbo].[BirimMaliyetTutar] AS [BirimMaliyetTutar]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EndirektUretimMaliyeti" EntityType="Self.EndirektUretimMaliyeti" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EndirektUretimMaliyeti].[UrunId] AS [UrunId], 
+    [EndirektUretimMaliyeti].[Toplam] AS [Toplam]
+    FROM [dbo].[EndirektUretimMaliyeti] AS [EndirektUretimMaliyeti]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GenelTutar" EntityType="Self.GenelTutar" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GenelTutar].[MaliyetId] AS [MaliyetId], 
+    [GenelTutar].[Oran] AS [Oran], 
+    [GenelTutar].[Expr1] AS [Expr1], 
+    [GenelTutar].[GiderId] AS [GiderId], 
+    [GenelTutar].[FaaliyetAd] AS [FaaliyetAd], 
+    [GenelTutar].[FaaliyetId] AS [FaaliyetId], 
+    [GenelTutar].[KMEId] AS [KMEId], 
+    [GenelTutar].[KMEAd] AS [KMEAd], 
+    [GenelTutar].[Onay] AS [Onay], 
+    [GenelTutar].[Adet] AS [Adet], 
+    [GenelTutar].[Expr2] AS [Expr2], 
+    [GenelTutar].[HesapKodu] AS [HesapKodu], 
+    [GenelTutar].[HesapAd] AS [HesapAd], 
+    [GenelTutar].[Tutar] AS [Tutar], 
+    [GenelTutar].[Geneltutar] AS [Geneltutar]
+    FROM [dbo].[GenelTutar] AS [GenelTutar]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Oran" EntityType="Self.Oran" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Oran].[MaliyetId] AS [MaliyetId], 
+    [Oran].[Oran] AS [Oran]
+    FROM [dbo].[Oran] AS [Oran]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OranUrunDagitim" EntityType="Self.OranUrunDagitim" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OranUrunDagitim].[MaliyetUrunId] AS [MaliyetUrunId], 
+    [OranUrunDagitim].[oran] AS [oran], 
+    [OranUrunDagitim].[DagitimOlcuId] AS [DagitimOlcuId], 
+    [OranUrunDagitim].[UrunId] AS [UrunId], 
+    [OranUrunDagitim].[UrunAd] AS [UrunAd]
+    FROM [dbo].[OranUrunDagitim] AS [OranUrunDagitim]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ToplamFaaliyetTutar" EntityType="Self.ToplamFaaliyetTutar" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ToplamFaaliyetTutar].[FaaliyetId] AS [FaaliyetId], 
+    [ToplamFaaliyetTutar].[toplam] AS [toplam], 
+    [ToplamFaaliyetTutar].[FaaliyetAd] AS [FaaliyetAd]
+    FROM [dbo].[ToplamFaaliyetTutar] AS [ToplamFaaliyetTutar]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ToplamMaliyet" EntityType="Self.ToplamMaliyet" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ToplamMaliyet].[UrunId] AS [UrunId], 
+    [ToplamMaliyet].[UrunAd] AS [UrunAd], 
+    [ToplamMaliyet].[EndirektToplam] AS [EndirektToplam], 
+    [ToplamMaliyet].[Dimmg] AS [Dimmg], 
+    [ToplamMaliyet].[Dig] AS [Dig], 
+    [ToplamMaliyet].[ToplamMaliyet] AS [ToplamMaliyet], 
+    [ToplamMaliyet].[BirimDagitimOlcu] AS [BirimDagitimOlcu], 
+    [ToplamMaliyet].[Urun_ID] AS [Urun_ID]
+    FROM [dbo].[ToplamMaliyet] AS [ToplamMaliyet]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UrunFaaliyetTutar" EntityType="Self.UrunFaaliyetTutar" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UrunFaaliyetTutar].[UrunAd] AS [UrunAd], 
+    [UrunFaaliyetTutar].[FaaliyetAd] AS [FaaliyetAd], 
+    [UrunFaaliyetTutar].[FaaliyetId] AS [FaaliyetId], 
+    [UrunFaaliyetTutar].[tutar] AS [tutar], 
+    [UrunFaaliyetTutar].[Number] AS [Number]
+    FROM [dbo].[UrunFaaliyetTutar] AS [UrunFaaliyetTutar]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_BirimMaliyet_DagıtımOlcu" Association="Self.FK_BirimMaliyet_DagıtımOlcu">
+            <End Role="DagıtımOlcu" EntitySet="DagıtımOlcu" />
+            <End Role="BirimMaliyet" EntitySet="BirimMaliyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BirimMaliyet_Urun" Association="Self.FK_BirimMaliyet_Urun">
+            <End Role="Urun" EntitySet="Urun" />
+            <End Role="BirimMaliyet" EntitySet="BirimMaliyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DagitimOlcuFaaliyetiliski_DagıtımOlcu" Association="Self.FK_DagitimOlcuFaaliyetiliski_DagıtımOlcu">
+            <End Role="DagıtımOlcu" EntitySet="DagıtımOlcu" />
+            <End Role="DagitimOlcuFaaliyetiliski" EntitySet="DagitimOlcuFaaliyetiliski" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DagitimOlcuFaaliyetiliski_Faaliyet" Association="Self.FK_DagitimOlcuFaaliyetiliski_Faaliyet">
+            <End Role="Faaliyet" EntitySet="Faaliyet" />
+            <End Role="DagitimOlcuFaaliyetiliski" EntitySet="DagitimOlcuFaaliyetiliski" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maliyet_Faaliyet" Association="Self.FK_Maliyet_Faaliyet">
+            <End Role="Faaliyet" EntitySet="Faaliyet" />
+            <End Role="Maliyet" EntitySet="Maliyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maliyet_Gider" Association="Self.FK_Maliyet_Gider">
+            <End Role="Gider" EntitySet="Gider" />
+            <End Role="Maliyet" EntitySet="Maliyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maliyet_KaynakMaliyetEtken" Association="Self.FK_Maliyet_KaynakMaliyetEtken">
+            <End Role="KaynakMaliyetEtken" EntitySet="KaynakMaliyetEtken" />
+            <End Role="Maliyet" EntitySet="Maliyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaliyetUrun_DagıtımOlcu" Association="Self.FK_MaliyetUrun_DagıtımOlcu">
+            <End Role="DagıtımOlcu" EntitySet="DagıtımOlcu" />
+            <End Role="MaliyetUrun" EntitySet="MaliyetUrun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaliyetUrun_Urun" Association="Self.FK_MaliyetUrun_Urun">
+            <End Role="Urun" EntitySet="Urun" />
+            <End Role="MaliyetUrun" EntitySet="MaliyetUrun" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KuzeyMakModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BirimMaliyet">
+          <Key>
+            <PropertyRef Name="BM_Id" />
+          </Key>
+          <Property Name="BM_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Urun_ID" Type="Int32" />
+          <Property Name="Dimmg" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Dig" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BirimDagitimOlcu" Type="Int32" />
+          <NavigationProperty Name="DagıtımOlcu" Relationship="Self.FK_BirimMaliyet_DagıtımOlcu" FromRole="BirimMaliyet" ToRole="DagıtımOlcu" />
+          <NavigationProperty Name="Urun" Relationship="Self.FK_BirimMaliyet_Urun" FromRole="BirimMaliyet" ToRole="Urun" />
+        </EntityType>
+        <EntityType Name="DagıtımOlcu">
+          <Key>
+            <PropertyRef Name="DagıtımOlcu_Id" />
+          </Key>
+          <Property Name="DagıtımOlcu_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DagıtımOlcu_Ad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BirimMaliyet" Relationship="Self.FK_BirimMaliyet_DagıtımOlcu" FromRole="DagıtımOlcu" ToRole="BirimMaliyet" />
+          <NavigationProperty Name="DagitimOlcuFaaliyetiliski" Relationship="Self.FK_DagitimOlcuFaaliyetiliski_DagıtımOlcu" FromRole="DagıtımOlcu" ToRole="DagitimOlcuFaaliyetiliski" />
+          <NavigationProperty Name="MaliyetUrun" Relationship="Self.FK_MaliyetUrun_DagıtımOlcu" FromRole="DagıtımOlcu" ToRole="MaliyetUrun" />
+        </EntityType>
+        <EntityType Name="DagitimOlcuFaaliyetiliski">
+          <Key>
+            <PropertyRef Name="Df_Id" />
+          </Key>
+          <Property Name="Df_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DagitimOlcuId" Type="Int32" />
+          <Property Name="FaaliyetId" Type="Int32" />
+          <NavigationProperty Name="DagıtımOlcu" Relationship="Self.FK_DagitimOlcuFaaliyetiliski_DagıtımOlcu" FromRole="DagitimOlcuFaaliyetiliski" ToRole="DagıtımOlcu" />
+          <NavigationProperty Name="Faaliyet" Relationship="Self.FK_DagitimOlcuFaaliyetiliski_Faaliyet" FromRole="DagitimOlcuFaaliyetiliski" ToRole="Faaliyet" />
+        </EntityType>
+        <EntityType Name="Faaliyet">
+          <Key>
+            <PropertyRef Name="FaaliyetId" />
+          </Key>
+          <Property Name="FaaliyetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FaaliyetAd" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DagitimOlcuFaaliyetiliski" Relationship="Self.FK_DagitimOlcuFaaliyetiliski_Faaliyet" FromRole="Faaliyet" ToRole="DagitimOlcuFaaliyetiliski" />
+          <NavigationProperty Name="Maliyet" Relationship="Self.FK_Maliyet_Faaliyet" FromRole="Faaliyet" ToRole="Maliyet" />
+        </EntityType>
+        <EntityType Name="Gider">
+          <Key>
+            <PropertyRef Name="GiderId" />
+          </Key>
+          <Property Name="GiderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HesapKodu" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="HesapAd" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Tutar" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Maliyet" Relationship="Self.FK_Maliyet_Gider" FromRole="Gider" ToRole="Maliyet" />
+        </EntityType>
+        <EntityType Name="KaynakMaliyetEtken">
+          <Key>
+            <PropertyRef Name="KMEId" />
+          </Key>
+          <Property Name="KMEId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KMEAd" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Maliyet" Relationship="Self.FK_Maliyet_KaynakMaliyetEtken" FromRole="KaynakMaliyetEtken" ToRole="Maliyet" />
+        </EntityType>
+        <EntityType Name="Maliyet">
+          <Key>
+            <PropertyRef Name="MaliyetId" />
+          </Key>
+          <Property Name="MaliyetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GiderId" Type="Int32" />
+          <Property Name="FaaliyetId" Type="Int32" />
+          <Property Name="KMEId" Type="Int32" />
+          <Property Name="Onay" Type="Boolean" />
+          <Property Name="Adet" Type="Int32" />
+          <NavigationProperty Name="Faaliyet" Relationship="Self.FK_Maliyet_Faaliyet" FromRole="Maliyet" ToRole="Faaliyet" />
+          <NavigationProperty Name="Gider" Relationship="Self.FK_Maliyet_Gider" FromRole="Maliyet" ToRole="Gider" />
+          <NavigationProperty Name="KaynakMaliyetEtken" Relationship="Self.FK_Maliyet_KaynakMaliyetEtken" FromRole="Maliyet" ToRole="KaynakMaliyetEtken" />
+        </EntityType>
+        <EntityType Name="MaliyetEndirektUretim">
+          <Key>
+            <PropertyRef Name="EUM_Id" />
+          </Key>
+          <Property Name="EUM_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Urun_Id" Type="Int32" />
+          <Property Name="Toplam" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="MaliyetUrun">
+          <Key>
+            <PropertyRef Name="MaliyetUrunId" />
+          </Key>
+          <Property Name="MaliyetUrunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunId" Type="Int32" />
+          <Property Name="DagitimOlcuId" Type="Int32" />
+          <Property Name="UrunDagitimAdet" Type="Decimal" Precision="18" Scale="3" />
+          <NavigationProperty Name="DagıtımOlcu" Relationship="Self.FK_MaliyetUrun_DagıtımOlcu" FromRole="MaliyetUrun" ToRole="DagıtımOlcu" />
+          <NavigationProperty Name="Urun" Relationship="Self.FK_MaliyetUrun_Urun" FromRole="MaliyetUrun" ToRole="Urun" />
+        </EntityType>
+        <EntityType Name="TblBirimMaliyetTutar">
+          <Key>
+            <PropertyRef Name="BMT_ID" />
+          </Key>
+          <Property Name="BMT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Urunler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EndirekUM" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Dimmg" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Dig" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ToplamMaliyet" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BirimMaliyet" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TblToplamMaliyet">
+          <Key>
+            <PropertyRef Name="TMaliyet_ID" />
+          </Key>
+          <Property Name="TMaliyet_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EndirektToplami" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Dimmg" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Dig" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ToplamMaliyeti" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TutarUrunFaaliyet">
+          <Key>
+            <PropertyRef Name="TUF_ID" />
+          </Key>
+          <Property Name="TUF_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Urun" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Faaliyet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TutarTUF" Type="Decimal" Precision="18" Scale="5" />
+        </EntityType>
+        <EntityType Name="Urun">
+          <Key>
+            <PropertyRef Name="UrunId" />
+          </Key>
+          <Property Name="UrunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunAd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BirimMaliyet" Relationship="Self.FK_BirimMaliyet_Urun" FromRole="Urun" ToRole="BirimMaliyet" />
+          <NavigationProperty Name="MaliyetUrun" Relationship="Self.FK_MaliyetUrun_Urun" FromRole="Urun" ToRole="MaliyetUrun" />
+        </EntityType>
+        <EntityType Name="BirimMaliyetTutar">
+          <Key>
+            <PropertyRef Name="UrunId" />
+            <PropertyRef Name="MaliyetUrunId" />
+          </Key>
+          <Property Name="UrunId" Type="Int32" Nullable="false" />
+          <Property Name="UrunAd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EndirektToplam" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Dimmg" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Dig" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ToplamMaliyet" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="BirimDagitimOlcu" Type="Int32" />
+          <Property Name="MaliyetUrunId" Type="Int32" Nullable="false" />
+          <Property Name="Expr1" Type="Int32" />
+          <Property Name="DagitimOlcuId" Type="Int32" />
+          <Property Name="UrunDagitimAdet" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="BirimMaliyet" Type="Decimal" Precision="38" Scale="17" />
+        </EntityType>
+        <EntityType Name="EndirektUretimMaliyeti">
+          <Key>
+            <PropertyRef Name="UrunId" />
+          </Key>
+          <Property Name="UrunId" Type="Int32" Nullable="false" />
+          <Property Name="Toplam" Type="Decimal" Precision="38" Scale="6" />
+        </EntityType>
+        <EntityType Name="GenelTutar">
+          <Key>
+            <PropertyRef Name="MaliyetId" />
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="Expr2" />
+          </Key>
+          <Property Name="MaliyetId" Type="Int32" Nullable="false" />
+          <Property Name="Oran" Type="Decimal" Precision="29" Scale="13" />
+          <Property Name="Expr1" Type="Int32" Nullable="false" />
+          <Property Name="GiderId" Type="Int32" />
+          <Property Name="FaaliyetAd" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+          <Property Name="FaaliyetId" Type="Int32" />
+          <Property Name="KMEId" Type="Int32" />
+          <Property Name="KMEAd" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Onay" Type="Boolean" />
+          <Property Name="Adet" Type="Int32" />
+          <Property Name="Expr2" Type="Int32" Nullable="false" />
+          <Property Name="HesapKodu" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="HesapAd" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Tutar" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Geneltutar1" Type="Decimal" Precision="38" Scale="6" />
+        </EntityType>
+        <EntityType Name="Oran">
+          <Key>
+            <PropertyRef Name="MaliyetId" />
+          </Key>
+          <Property Name="MaliyetId" Type="Int32" Nullable="false" />
+          <Property Name="Oran1" Type="Decimal" Precision="29" Scale="13" />
+        </EntityType>
+        <EntityType Name="OranUrunDagitim">
+          <Key>
+            <PropertyRef Name="MaliyetUrunId" />
+          </Key>
+          <Property Name="MaliyetUrunId" Type="Int32" Nullable="false" />
+          <Property Name="oran" Type="Decimal" Precision="38" Scale="20" />
+          <Property Name="DagitimOlcuId" Type="Int32" />
+          <Property Name="UrunId" Type="Int32" />
+          <Property Name="UrunAd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ToplamFaaliyetTutar">
+          <Key>
+            <PropertyRef Name="FaaliyetId" />
+          </Key>
+          <Property Name="FaaliyetId" Type="Int32" Nullable="false" />
+          <Property Name="toplam" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="FaaliyetAd" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ToplamMaliyet">
+          <Key>
+            <PropertyRef Name="UrunId" />
+          </Key>
+          <Property Name="UrunId" Type="Int32" Nullable="false" />
+          <Property Name="UrunAd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EndirektToplam" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Dimmg" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Dig" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ToplamMaliyet1" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="BirimDagitimOlcu" Type="Int32" />
+          <Property Name="Urun_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UrunFaaliyetTutar">
+          <Key>
+            <PropertyRef Name="FaaliyetId" />
+          </Key>
+          <Property Name="UrunAd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FaaliyetAd" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+          <Property Name="FaaliyetId" Type="Int32" Nullable="false" />
+          <Property Name="tutar" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="Number" Type="Int64" />
+        </EntityType>
+        <Association Name="FK_BirimMaliyet_DagıtımOlcu">
+          <End Role="DagıtımOlcu" Type="Self.DagıtımOlcu" Multiplicity="0..1" />
+          <End Role="BirimMaliyet" Type="Self.BirimMaliyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DagıtımOlcu">
+              <PropertyRef Name="DagıtımOlcu_Id" />
+            </Principal>
+            <Dependent Role="BirimMaliyet">
+              <PropertyRef Name="BirimDagitimOlcu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BirimMaliyet_Urun">
+          <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
+          <End Role="BirimMaliyet" Type="Self.BirimMaliyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urun">
+              <PropertyRef Name="UrunId" />
+            </Principal>
+            <Dependent Role="BirimMaliyet">
+              <PropertyRef Name="Urun_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DagitimOlcuFaaliyetiliski_DagıtımOlcu">
+          <End Role="DagıtımOlcu" Type="Self.DagıtımOlcu" Multiplicity="0..1" />
+          <End Role="DagitimOlcuFaaliyetiliski" Type="Self.DagitimOlcuFaaliyetiliski" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DagıtımOlcu">
+              <PropertyRef Name="DagıtımOlcu_Id" />
+            </Principal>
+            <Dependent Role="DagitimOlcuFaaliyetiliski">
+              <PropertyRef Name="DagitimOlcuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaliyetUrun_DagıtımOlcu">
+          <End Role="DagıtımOlcu" Type="Self.DagıtımOlcu" Multiplicity="0..1" />
+          <End Role="MaliyetUrun" Type="Self.MaliyetUrun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DagıtımOlcu">
+              <PropertyRef Name="DagıtımOlcu_Id" />
+            </Principal>
+            <Dependent Role="MaliyetUrun">
+              <PropertyRef Name="DagitimOlcuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DagitimOlcuFaaliyetiliski_Faaliyet">
+          <End Role="Faaliyet" Type="Self.Faaliyet" Multiplicity="0..1" />
+          <End Role="DagitimOlcuFaaliyetiliski" Type="Self.DagitimOlcuFaaliyetiliski" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faaliyet">
+              <PropertyRef Name="FaaliyetId" />
+            </Principal>
+            <Dependent Role="DagitimOlcuFaaliyetiliski">
+              <PropertyRef Name="FaaliyetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Maliyet_Faaliyet">
+          <End Role="Faaliyet" Type="Self.Faaliyet" Multiplicity="0..1" />
+          <End Role="Maliyet" Type="Self.Maliyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faaliyet">
+              <PropertyRef Name="FaaliyetId" />
+            </Principal>
+            <Dependent Role="Maliyet">
+              <PropertyRef Name="FaaliyetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Maliyet_Gider">
+          <End Role="Gider" Type="Self.Gider" Multiplicity="0..1" />
+          <End Role="Maliyet" Type="Self.Maliyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gider">
+              <PropertyRef Name="GiderId" />
+            </Principal>
+            <Dependent Role="Maliyet">
+              <PropertyRef Name="GiderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Maliyet_KaynakMaliyetEtken">
+          <End Role="KaynakMaliyetEtken" Type="Self.KaynakMaliyetEtken" Multiplicity="0..1" />
+          <End Role="Maliyet" Type="Self.Maliyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KaynakMaliyetEtken">
+              <PropertyRef Name="KMEId" />
+            </Principal>
+            <Dependent Role="Maliyet">
+              <PropertyRef Name="KMEId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaliyetUrun_Urun">
+          <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
+          <End Role="MaliyetUrun" Type="Self.MaliyetUrun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urun">
+              <PropertyRef Name="UrunId" />
+            </Principal>
+            <Dependent Role="MaliyetUrun">
+              <PropertyRef Name="UrunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KuzeyMakEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BirimMaliyet" EntityType="Self.BirimMaliyet" />
+          <EntitySet Name="DagıtımOlcu" EntityType="Self.DagıtımOlcu" />
+          <EntitySet Name="DagitimOlcuFaaliyetiliski" EntityType="Self.DagitimOlcuFaaliyetiliski" />
+          <EntitySet Name="Faaliyet" EntityType="Self.Faaliyet" />
+          <EntitySet Name="Gider" EntityType="Self.Gider" />
+          <EntitySet Name="KaynakMaliyetEtken" EntityType="Self.KaynakMaliyetEtken" />
+          <EntitySet Name="Maliyet" EntityType="Self.Maliyet" />
+          <EntitySet Name="MaliyetEndirektUretim" EntityType="Self.MaliyetEndirektUretim" />
+          <EntitySet Name="MaliyetUrun" EntityType="Self.MaliyetUrun" />
+          <EntitySet Name="TblBirimMaliyetTutar" EntityType="Self.TblBirimMaliyetTutar" />
+          <EntitySet Name="TblToplamMaliyet" EntityType="Self.TblToplamMaliyet" />
+          <EntitySet Name="TutarUrunFaaliyet" EntityType="Self.TutarUrunFaaliyet" />
+          <EntitySet Name="Urun" EntityType="Self.Urun" />
+          <EntitySet Name="BirimMaliyetTutar" EntityType="Self.BirimMaliyetTutar" />
+          <EntitySet Name="EndirektUretimMaliyeti" EntityType="Self.EndirektUretimMaliyeti" />
+          <EntitySet Name="GenelTutar" EntityType="Self.GenelTutar" />
+          <EntitySet Name="Oran" EntityType="Self.Oran" />
+          <EntitySet Name="OranUrunDagitim" EntityType="Self.OranUrunDagitim" />
+          <EntitySet Name="ToplamFaaliyetTutar" EntityType="Self.ToplamFaaliyetTutar" />
+          <EntitySet Name="ToplamMaliyet" EntityType="Self.ToplamMaliyet" />
+          <EntitySet Name="UrunFaaliyetTutar" EntityType="Self.UrunFaaliyetTutar" />
+          <AssociationSet Name="FK_BirimMaliyet_DagıtımOlcu" Association="Self.FK_BirimMaliyet_DagıtımOlcu">
+            <End Role="DagıtımOlcu" EntitySet="DagıtımOlcu" />
+            <End Role="BirimMaliyet" EntitySet="BirimMaliyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BirimMaliyet_Urun" Association="Self.FK_BirimMaliyet_Urun">
+            <End Role="Urun" EntitySet="Urun" />
+            <End Role="BirimMaliyet" EntitySet="BirimMaliyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DagitimOlcuFaaliyetiliski_DagıtımOlcu" Association="Self.FK_DagitimOlcuFaaliyetiliski_DagıtımOlcu">
+            <End Role="DagıtımOlcu" EntitySet="DagıtımOlcu" />
+            <End Role="DagitimOlcuFaaliyetiliski" EntitySet="DagitimOlcuFaaliyetiliski" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaliyetUrun_DagıtımOlcu" Association="Self.FK_MaliyetUrun_DagıtımOlcu">
+            <End Role="DagıtımOlcu" EntitySet="DagıtımOlcu" />
+            <End Role="MaliyetUrun" EntitySet="MaliyetUrun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DagitimOlcuFaaliyetiliski_Faaliyet" Association="Self.FK_DagitimOlcuFaaliyetiliski_Faaliyet">
+            <End Role="Faaliyet" EntitySet="Faaliyet" />
+            <End Role="DagitimOlcuFaaliyetiliski" EntitySet="DagitimOlcuFaaliyetiliski" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maliyet_Faaliyet" Association="Self.FK_Maliyet_Faaliyet">
+            <End Role="Faaliyet" EntitySet="Faaliyet" />
+            <End Role="Maliyet" EntitySet="Maliyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maliyet_Gider" Association="Self.FK_Maliyet_Gider">
+            <End Role="Gider" EntitySet="Gider" />
+            <End Role="Maliyet" EntitySet="Maliyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maliyet_KaynakMaliyetEtken" Association="Self.FK_Maliyet_KaynakMaliyetEtken">
+            <End Role="KaynakMaliyetEtken" EntitySet="KaynakMaliyetEtken" />
+            <End Role="Maliyet" EntitySet="Maliyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaliyetUrun_Urun" Association="Self.FK_MaliyetUrun_Urun">
+            <End Role="Urun" EntitySet="Urun" />
+            <End Role="MaliyetUrun" EntitySet="MaliyetUrun" />
+          </AssociationSet>
+          <FunctionImport Name="BirimMaliyetSP" ReturnType="Collection(KuzeyMakModel.BirimMaliyetSP_Result)" />
+          <FunctionImport Name="ProductPrice" ReturnType="Collection(KuzeyMakModel.ProductPrice_Result)" />
+          <FunctionImport Name="SPToplamMaliyet" ReturnType="Collection(KuzeyMakModel.SPToplamMaliyet_Result)" />
+          <FunctionImport Name="BirimMaliyetSP1" ReturnType="Collection(KuzeyMakModel.BirimMaliyetSP_Result)" />
+          <FunctionImport Name="ProductPrice1" ReturnType="Collection(KuzeyMakModel.ProductPrice_Result)" />
+          <FunctionImport Name="SPToplamMaliyet1" ReturnType="Collection(KuzeyMakModel.SPToplamMaliyet_Result)" />
+          <FunctionImport Name="BirimMaliyetSP2" ReturnType="Collection(KuzeyMakModel.BirimMaliyetSP_Result)" />
+          <FunctionImport Name="Endirekt" ReturnType="Collection(KuzeyMakModel.Endirekt_Result)" />
+          <FunctionImport Name="Endirekt1" ReturnType="Collection(KuzeyMakModel.Endirekt_Result)" />
+        </EntityContainer>
+        <ComplexType Name="BirimMaliyetSP_Result">
+          <Property Type="Int32" Name="BMT_ID" Nullable="false" />
+          <Property Type="String" Name="Urunler" Nullable="true" />
+          <Property Type="Decimal" Name="EndirekUM" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Dimmg" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Dig" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="ToplamMaliyet" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="BirimMaliyet" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProductPrice_Result">
+          <Property Type="Int32" Name="TUF_ID" Nullable="false" />
+          <Property Type="String" Name="Urun" Nullable="true" />
+          <Property Type="String" Name="Faaliyet" Nullable="true" />
+          <Property Type="Decimal" Name="TutarTUF" Nullable="true" Precision="18" Scale="5" />
+        </ComplexType>
+        <ComplexType Name="SPToplamMaliyet_Result">
+          <Property Type="Int32" Name="TMaliyet_ID" Nullable="false" />
+          <Property Type="String" Name="UrunAdi" Nullable="true" />
+          <Property Type="Decimal" Name="EndirektToplami" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Dimmg" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Dig" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="ToplamMaliyeti" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="Endirekt_Result">
+          <Property Type="Int32" Name="EUM_Id" Nullable="false" />
+          <Property Type="Int32" Name="Urun_Id" Nullable="true" />
+          <Property Type="Decimal" Name="Toplam" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KuzeyMakModelStoreContainer" CdmEntityContainer="KuzeyMakEntities">
+          <EntitySetMapping Name="BirimMaliyet">
+            <EntityTypeMapping TypeName="KuzeyMakModel.BirimMaliyet">
+              <MappingFragment StoreEntitySet="BirimMaliyet">
+                <ScalarProperty Name="BM_Id" ColumnName="BM_Id" />
+                <ScalarProperty Name="Urun_ID" ColumnName="Urun_ID" />
+                <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+                <ScalarProperty Name="Dig" ColumnName="Dig" />
+                <ScalarProperty Name="BirimDagitimOlcu" ColumnName="BirimDagitimOlcu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DagıtımOlcu">
+            <EntityTypeMapping TypeName="KuzeyMakModel.DagıtımOlcu">
+              <MappingFragment StoreEntitySet="DagıtımOlcu">
+                <ScalarProperty Name="DagıtımOlcu_Id" ColumnName="DagıtımOlcu_Id" />
+                <ScalarProperty Name="DagıtımOlcu_Ad" ColumnName="DagıtımOlcu_Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DagitimOlcuFaaliyetiliski">
+            <EntityTypeMapping TypeName="KuzeyMakModel.DagitimOlcuFaaliyetiliski">
+              <MappingFragment StoreEntitySet="DagitimOlcuFaaliyetiliski">
+                <ScalarProperty Name="Df_Id" ColumnName="Df_Id" />
+                <ScalarProperty Name="DagitimOlcuId" ColumnName="DagitimOlcuId" />
+                <ScalarProperty Name="FaaliyetId" ColumnName="FaaliyetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faaliyet">
+            <EntityTypeMapping TypeName="KuzeyMakModel.Faaliyet">
+              <MappingFragment StoreEntitySet="Faaliyet">
+                <ScalarProperty Name="FaaliyetId" ColumnName="FaaliyetId" />
+                <ScalarProperty Name="FaaliyetAd" ColumnName="FaaliyetAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gider">
+            <EntityTypeMapping TypeName="KuzeyMakModel.Gider">
+              <MappingFragment StoreEntitySet="Gider">
+                <ScalarProperty Name="GiderId" ColumnName="GiderId" />
+                <ScalarProperty Name="HesapKodu" ColumnName="HesapKodu" />
+                <ScalarProperty Name="HesapAd" ColumnName="HesapAd" />
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KaynakMaliyetEtken">
+            <EntityTypeMapping TypeName="KuzeyMakModel.KaynakMaliyetEtken">
+              <MappingFragment StoreEntitySet="KaynakMaliyetEtken">
+                <ScalarProperty Name="KMEId" ColumnName="KMEId" />
+                <ScalarProperty Name="KMEAd" ColumnName="KMEAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maliyet">
+            <EntityTypeMapping TypeName="KuzeyMakModel.Maliyet">
+              <MappingFragment StoreEntitySet="Maliyet">
+                <ScalarProperty Name="MaliyetId" ColumnName="MaliyetId" />
+                <ScalarProperty Name="GiderId" ColumnName="GiderId" />
+                <ScalarProperty Name="FaaliyetId" ColumnName="FaaliyetId" />
+                <ScalarProperty Name="KMEId" ColumnName="KMEId" />
+                <ScalarProperty Name="Onay" ColumnName="Onay" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaliyetEndirektUretim">
+            <EntityTypeMapping TypeName="KuzeyMakModel.MaliyetEndirektUretim">
+              <MappingFragment StoreEntitySet="MaliyetEndirektUretim">
+                <ScalarProperty Name="EUM_Id" ColumnName="EUM_Id" />
+                <ScalarProperty Name="Urun_Id" ColumnName="Urun_Id" />
+                <ScalarProperty Name="Toplam" ColumnName="Toplam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaliyetUrun">
+            <EntityTypeMapping TypeName="KuzeyMakModel.MaliyetUrun">
+              <MappingFragment StoreEntitySet="MaliyetUrun">
+                <ScalarProperty Name="MaliyetUrunId" ColumnName="MaliyetUrunId" />
+                <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+                <ScalarProperty Name="DagitimOlcuId" ColumnName="DagitimOlcuId" />
+                <ScalarProperty Name="UrunDagitimAdet" ColumnName="UrunDagitimAdet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblBirimMaliyetTutar">
+            <EntityTypeMapping TypeName="KuzeyMakModel.TblBirimMaliyetTutar">
+              <MappingFragment StoreEntitySet="TblBirimMaliyetTutar">
+                <ScalarProperty Name="BMT_ID" ColumnName="BMT_ID" />
+                <ScalarProperty Name="Urunler" ColumnName="Urunler" />
+                <ScalarProperty Name="EndirekUM" ColumnName="EndirekUM" />
+                <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+                <ScalarProperty Name="Dig" ColumnName="Dig" />
+                <ScalarProperty Name="ToplamMaliyet" ColumnName="ToplamMaliyet" />
+                <ScalarProperty Name="BirimMaliyet" ColumnName="BirimMaliyet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblToplamMaliyet">
+            <EntityTypeMapping TypeName="KuzeyMakModel.TblToplamMaliyet">
+              <MappingFragment StoreEntitySet="TblToplamMaliyet">
+                <ScalarProperty Name="TMaliyet_ID" ColumnName="TMaliyet_ID" />
+                <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+                <ScalarProperty Name="EndirektToplami" ColumnName="EndirektToplami" />
+                <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+                <ScalarProperty Name="Dig" ColumnName="Dig" />
+                <ScalarProperty Name="ToplamMaliyeti" ColumnName="ToplamMaliyeti" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TutarUrunFaaliyet">
+            <EntityTypeMapping TypeName="KuzeyMakModel.TutarUrunFaaliyet">
+              <MappingFragment StoreEntitySet="TutarUrunFaaliyet">
+                <ScalarProperty Name="TUF_ID" ColumnName="TUF_ID" />
+                <ScalarProperty Name="Urun" ColumnName="Urun" />
+                <ScalarProperty Name="Faaliyet" ColumnName="Faaliyet" />
+                <ScalarProperty Name="TutarTUF" ColumnName="TutarTUF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Urun">
+            <EntityTypeMapping TypeName="KuzeyMakModel.Urun">
+              <MappingFragment StoreEntitySet="Urun">
+                <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+                <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BirimMaliyetTutar">
+            <EntityTypeMapping TypeName="KuzeyMakModel.BirimMaliyetTutar">
+              <MappingFragment StoreEntitySet="BirimMaliyetTutar">
+                <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+                <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+                <ScalarProperty Name="EndirektToplam" ColumnName="EndirektToplam" />
+                <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+                <ScalarProperty Name="Dig" ColumnName="Dig" />
+                <ScalarProperty Name="ToplamMaliyet" ColumnName="ToplamMaliyet" />
+                <ScalarProperty Name="BirimDagitimOlcu" ColumnName="BirimDagitimOlcu" />
+                <ScalarProperty Name="MaliyetUrunId" ColumnName="MaliyetUrunId" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="DagitimOlcuId" ColumnName="DagitimOlcuId" />
+                <ScalarProperty Name="UrunDagitimAdet" ColumnName="UrunDagitimAdet" />
+                <ScalarProperty Name="BirimMaliyet" ColumnName="BirimMaliyet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EndirektUretimMaliyeti">
+            <EntityTypeMapping TypeName="KuzeyMakModel.EndirektUretimMaliyeti">
+              <MappingFragment StoreEntitySet="EndirektUretimMaliyeti">
+                <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+                <ScalarProperty Name="Toplam" ColumnName="Toplam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GenelTutar">
+            <EntityTypeMapping TypeName="KuzeyMakModel.GenelTutar">
+              <MappingFragment StoreEntitySet="GenelTutar">
+                <ScalarProperty Name="MaliyetId" ColumnName="MaliyetId" />
+                <ScalarProperty Name="Oran" ColumnName="Oran" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="GiderId" ColumnName="GiderId" />
+                <ScalarProperty Name="FaaliyetAd" ColumnName="FaaliyetAd" />
+                <ScalarProperty Name="FaaliyetId" ColumnName="FaaliyetId" />
+                <ScalarProperty Name="KMEId" ColumnName="KMEId" />
+                <ScalarProperty Name="KMEAd" ColumnName="KMEAd" />
+                <ScalarProperty Name="Onay" ColumnName="Onay" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+                <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+                <ScalarProperty Name="HesapKodu" ColumnName="HesapKodu" />
+                <ScalarProperty Name="HesapAd" ColumnName="HesapAd" />
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+                <ScalarProperty Name="Geneltutar1" ColumnName="Geneltutar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oran">
+            <EntityTypeMapping TypeName="KuzeyMakModel.Oran">
+              <MappingFragment StoreEntitySet="Oran">
+                <ScalarProperty Name="MaliyetId" ColumnName="MaliyetId" />
+                <ScalarProperty Name="Oran1" ColumnName="Oran" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OranUrunDagitim">
+            <EntityTypeMapping TypeName="KuzeyMakModel.OranUrunDagitim">
+              <MappingFragment StoreEntitySet="OranUrunDagitim">
+                <ScalarProperty Name="MaliyetUrunId" ColumnName="MaliyetUrunId" />
+                <ScalarProperty Name="oran" ColumnName="oran" />
+                <ScalarProperty Name="DagitimOlcuId" ColumnName="DagitimOlcuId" />
+                <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+                <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ToplamFaaliyetTutar">
+            <EntityTypeMapping TypeName="KuzeyMakModel.ToplamFaaliyetTutar">
+              <MappingFragment StoreEntitySet="ToplamFaaliyetTutar">
+                <ScalarProperty Name="FaaliyetId" ColumnName="FaaliyetId" />
+                <ScalarProperty Name="toplam" ColumnName="toplam" />
+                <ScalarProperty Name="FaaliyetAd" ColumnName="FaaliyetAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ToplamMaliyet">
+            <EntityTypeMapping TypeName="KuzeyMakModel.ToplamMaliyet">
+              <MappingFragment StoreEntitySet="ToplamMaliyet">
+                <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+                <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+                <ScalarProperty Name="EndirektToplam" ColumnName="EndirektToplam" />
+                <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+                <ScalarProperty Name="Dig" ColumnName="Dig" />
+                <ScalarProperty Name="ToplamMaliyet1" ColumnName="ToplamMaliyet" />
+                <ScalarProperty Name="BirimDagitimOlcu" ColumnName="BirimDagitimOlcu" />
+                <ScalarProperty Name="Urun_ID" ColumnName="Urun_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UrunFaaliyetTutar">
+            <EntityTypeMapping TypeName="KuzeyMakModel.UrunFaaliyetTutar">
+              <MappingFragment StoreEntitySet="UrunFaaliyetTutar">
+                <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+                <ScalarProperty Name="FaaliyetAd" ColumnName="FaaliyetAd" />
+                <ScalarProperty Name="FaaliyetId" ColumnName="FaaliyetId" />
+                <ScalarProperty Name="tutar" ColumnName="tutar" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="BirimMaliyetSP" FunctionName="KuzeyMakModel.Store.BirimMaliyetSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KuzeyMakModel.BirimMaliyetSP_Result">
+                <ScalarProperty Name="BMT_ID" ColumnName="BMT_ID" />
+                <ScalarProperty Name="Urunler" ColumnName="Urunler" />
+                <ScalarProperty Name="EndirekUM" ColumnName="EndirekUM" />
+                <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+                <ScalarProperty Name="Dig" ColumnName="Dig" />
+                <ScalarProperty Name="ToplamMaliyet" ColumnName="ToplamMaliyet" />
+                <ScalarProperty Name="BirimMaliyet" ColumnName="BirimMaliyet" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProductPrice" FunctionName="KuzeyMakModel.Store.ProductPrice">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KuzeyMakModel.ProductPrice_Result">
+                <ScalarProperty Name="TUF_ID" ColumnName="TUF_ID" />
+                <ScalarProperty Name="Urun" ColumnName="Urun" />
+                <ScalarProperty Name="Faaliyet" ColumnName="Faaliyet" />
+                <ScalarProperty Name="TutarTUF" ColumnName="TutarTUF" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPToplamMaliyet" FunctionName="KuzeyMakModel.Store.SPToplamMaliyet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KuzeyMakModel.SPToplamMaliyet_Result">
+                <ScalarProperty Name="TMaliyet_ID" ColumnName="TMaliyet_ID" />
+                <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+                <ScalarProperty Name="EndirektToplami" ColumnName="EndirektToplami" />
+                <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+                <ScalarProperty Name="Dig" ColumnName="Dig" />
+                <ScalarProperty Name="ToplamMaliyeti" ColumnName="ToplamMaliyeti" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BirimMaliyetSP1" FunctionName="KuzeyMakModel.Store.BirimMaliyetSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KuzeyMakModel.BirimMaliyetSP_Result">
+                <ScalarProperty Name="BMT_ID" ColumnName="BMT_ID" />
+                <ScalarProperty Name="Urunler" ColumnName="Urunler" />
+                <ScalarProperty Name="EndirekUM" ColumnName="EndirekUM" />
+                <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+                <ScalarProperty Name="Dig" ColumnName="Dig" />
+                <ScalarProperty Name="ToplamMaliyet" ColumnName="ToplamMaliyet" />
+                <ScalarProperty Name="BirimMaliyet" ColumnName="BirimMaliyet" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProductPrice1" FunctionName="KuzeyMakModel.Store.ProductPrice">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KuzeyMakModel.ProductPrice_Result">
+                <ScalarProperty Name="TUF_ID" ColumnName="TUF_ID" />
+                <ScalarProperty Name="Urun" ColumnName="Urun" />
+                <ScalarProperty Name="Faaliyet" ColumnName="Faaliyet" />
+                <ScalarProperty Name="TutarTUF" ColumnName="TutarTUF" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPToplamMaliyet1" FunctionName="KuzeyMakModel.Store.SPToplamMaliyet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KuzeyMakModel.SPToplamMaliyet_Result">
+                <ScalarProperty Name="TMaliyet_ID" ColumnName="TMaliyet_ID" />
+                <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+                <ScalarProperty Name="EndirektToplami" ColumnName="EndirektToplami" />
+                <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+                <ScalarProperty Name="Dig" ColumnName="Dig" />
+                <ScalarProperty Name="ToplamMaliyeti" ColumnName="ToplamMaliyeti" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BirimMaliyetSP2" FunctionName="KuzeyMakModel.Store.BirimMaliyetSP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KuzeyMakModel.BirimMaliyetSP_Result">
+                <ScalarProperty Name="BMT_ID" ColumnName="BMT_ID" />
+                <ScalarProperty Name="Urunler" ColumnName="Urunler" />
+                <ScalarProperty Name="EndirekUM" ColumnName="EndirekUM" />
+                <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+                <ScalarProperty Name="Dig" ColumnName="Dig" />
+                <ScalarProperty Name="ToplamMaliyet" ColumnName="ToplamMaliyet" />
+                <ScalarProperty Name="BirimMaliyet" ColumnName="BirimMaliyet" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Endirekt" FunctionName="KuzeyMakModel.Store.Endirekt">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KuzeyMakModel.Endirekt_Result">
+                <ScalarProperty Name="EUM_Id" ColumnName="EUM_Id" />
+                <ScalarProperty Name="Urun_Id" ColumnName="Urun_Id" />
+                <ScalarProperty Name="Toplam" ColumnName="Toplam" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Endirekt1" FunctionName="KuzeyMakModel.Store.Endirekt">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KuzeyMakModel.Endirekt_Result">
+                <ScalarProperty Name="EUM_Id" ColumnName="EUM_Id" />
+                <ScalarProperty Name="Urun_Id" ColumnName="Urun_Id" />
+                <ScalarProperty Name="Toplam" ColumnName="Toplam" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

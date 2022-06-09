@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="108b429216a14af4a87a12cb0a9a19b2" Name="Diagram1">
+        <EntityTypeShape EntityType="KuzeyMakModel.BirimMaliyet" Width="1.5" PointX="9" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.DagıtımOlcu" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.DagitimOlcuFaaliyetiliski" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.Faaliyet" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.Gider" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.KaynakMaliyetEtken" Width="1.5" PointX="3.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.Maliyet" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.MaliyetEndirektUretim" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.MaliyetUrun" Width="1.5" PointX="8" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.TblBirimMaliyetTutar" Width="1.5" PointX="8.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.TblToplamMaliyet" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.TutarUrunFaaliyet" Width="1.5" PointX="2.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.Urun" Width="1.5" PointX="5.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.BirimMaliyetTutar" Width="1.5" PointX="10.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.EndirektUretimMaliyeti" Width="1.5" PointX="10.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.GenelTutar" Width="1.5" PointX="7.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.Oran" Width="1.5" PointX="11.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.OranUrunDagitim" Width="1.5" PointX="4.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.ToplamFaaliyetTutar" Width="1.5" PointX="12.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.ToplamMaliyet" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KuzeyMakModel.UrunFaaliyetTutar" Width="1.5" PointX="12.75" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="KuzeyMakModel.FK_BirimMaliyet_DagıtımOlcu" ManuallyRouted="false" />
+        <AssociationConnector Association="KuzeyMakModel.FK_BirimMaliyet_Urun" ManuallyRouted="false" />
+        <AssociationConnector Association="KuzeyMakModel.FK_DagitimOlcuFaaliyetiliski_DagıtımOlcu" ManuallyRouted="false" />
+        <AssociationConnector Association="KuzeyMakModel.FK_MaliyetUrun_DagıtımOlcu" ManuallyRouted="false" />
+        <AssociationConnector Association="KuzeyMakModel.FK_DagitimOlcuFaaliyetiliski_Faaliyet" ManuallyRouted="false" />
+        <AssociationConnector Association="KuzeyMakModel.FK_Maliyet_Faaliyet" ManuallyRouted="false" />
+        <AssociationConnector Association="KuzeyMakModel.FK_Maliyet_Gider" ManuallyRouted="false" />
+        <AssociationConnector Association="KuzeyMakModel.FK_Maliyet_KaynakMaliyetEtken" ManuallyRouted="false" />
+        <AssociationConnector Association="KuzeyMakModel.FK_MaliyetUrun_Urun" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

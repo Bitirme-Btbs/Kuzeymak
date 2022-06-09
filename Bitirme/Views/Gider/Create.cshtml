@@ -1,0 +1,29 @@
+﻿@using Bitirme.Models
+@model Gider
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<form class=" form-group" method="post">
+    <div> 
+        @Html.Label("Hesap Kodu") 
+    @Html.TextBoxFor(ba => ba.HesapKodu, new { @class = "form-control" }) 
+    @Html.ValidationMessageFor(ba=>ba.HesapKodu,"",new {@style="color:red"})
+    </div>
+    <div>
+        @Html.Label("Hesap Ad")
+        @Html.TextBoxFor(ba => ba.HesapAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(ba => ba.HesapAd, "", new { @style = "color:red" })
+    </div>
+    <div>
+    @Html.Label("Tutar")
+    @Html.TextBoxFor(ba => ba.Tutar, new { @class = "form-control" })
+    @Html.ValidationMessageFor(ba=>ba.Tutar,"",new {@style ="color:red"})
+    </div>
+
+
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Gider Ekle</button>
+    </div>
+</form>

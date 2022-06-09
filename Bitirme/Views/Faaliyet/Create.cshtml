@@ -1,0 +1,18 @@
+﻿@using Bitirme.Models
+@model Faaliyet
+@{
+    ViewBag.Title = "Create";
+}
+
+<form class=" form-group" method="post">
+    <div>
+        @Html.Label("Faaliyet Adı")  @Html.TextBoxFor(ba => ba.FaaliyetAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(ba => ba.FaaliyetAd, "", new { @style = "color:red" })
+    </div>
+  
+
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Faaliyet Ekle</button>
+    </div>
+</form>
+

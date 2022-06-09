@@ -1,0 +1,52 @@
+﻿@using Bitirme.Models
+@model Maliyet
+@{
+    ViewBag.Title = "Create";
+}
+<form method="post" class="form-group">
+    <div>
+        <label>Giderler</label>
+        @Html.DropDownListFor(ba => ba.Gider.GiderId, (List<SelectListItem>)ViewData["Mgider"], new { @class = "form-control" })
+        @Html.ValidationMessageFor(ba => ba.Gider.GiderId, "", new { @style = "color.red" })
+
+    </div>
+    <div>
+
+
+        <label>Kaynak Maliyet Etkenleri</label>
+        @Html.DropDownListFor(ba => ba.KaynakMaliyetEtken.KMEId, (List<SelectListItem>)ViewData["Mkme"], new { @class = "form-control" })
+        @Html.ValidationMessageFor(ba => ba.KaynakMaliyetEtken.KMEId, "", new { @style = "color.red" })
+
+    </div>
+    <div>
+
+
+        <label>Faaliyet</label>
+        @Html.DropDownListFor(ba => ba.Faaliyet.FaaliyetId, (List<SelectListItem>)ViewData["Mfaaliyet"], new { @class = "form-control" })
+        @Html.ValidationMessageFor(ba => ba.Faaliyet.FaaliyetId, "", new { @style = "color.red" })
+
+    </div>
+
+    <div>
+        <label>Onay</label>
+        @Html.DropDownListFor(ba => ba.Onay, new List<SelectListItem>() { new SelectListItem() { Text = "---Lütfen Seçiniz---" }, new SelectListItem() { Text = "Aktif", Value = "True" }, new SelectListItem() { Text = "Pasif", Value = "False" } }, new { @class = "form-control" })
+        @Html.ValidationMessageFor(ba => ba.Onay, "", new { @style = "color.red" })
+    </div>
+    @*<div>
+        <label>Onay</label>
+        @Html.DropDownListFor(ba => ba.Onay, new List<SelectListItem>() { new SelectListItem() { Text = "Aktif", Value = "True" }, new SelectListItem() { Text = "Pasif", Value = "False" } }, new { @class = "form-control" })
+        @Html.ValidationMessageFor(ba => ba.Onay, "", new { @style = "color.red" })
+    </div>*@
+    <div>
+
+        <label>Adet</label>
+        @Html.TextBoxFor(ba => ba.Adet, new { @class = "form-control" })
+        @Html.ValidationMessageFor(ba => ba.Onay, "", new { @style = "color.red" })
+    </div>
+
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Ekle</button>
+    </div>
+</form>
+
+

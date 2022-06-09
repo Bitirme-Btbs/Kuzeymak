@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+@using Bitirme.Models
+@model DagitimOlcuFaaliyetiliski
+
+@using (Html.BeginForm("Edit", "DagitimOlcuFaaliyet", FormMethod.Post))
+{
+<div>
+    @Html.LabelFor(ba => ba.Df_Id)
+    @Html.TextBoxFor(ba => ba.Df_Id)
+</div>
+    <div>
+        <label>Dağıtım Ölçüsü</label>
+        @Html.DropDownListFor(ba => ba.DagıtımOlcu.DagıtımOlcu_Id, (List<SelectListItem>)ViewBag.Do, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Faaliyet</label>
+        @Html.DropDownListFor(ba => ba.Faaliyet.FaaliyetId, (List<SelectListItem>)ViewBag.Faaliyetler, new { @class = "form-control" })
+    </div>
+
+
+
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Ekle</button>
+    </div>
+}
+

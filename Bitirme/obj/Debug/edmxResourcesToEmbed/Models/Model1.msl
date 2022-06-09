@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KuzeyMakModelStoreContainer" CdmEntityContainer="KuzeyMakEntities">
+    <EntitySetMapping Name="BirimMaliyet">
+      <EntityTypeMapping TypeName="KuzeyMakModel.BirimMaliyet">
+        <MappingFragment StoreEntitySet="BirimMaliyet">
+          <ScalarProperty Name="BM_Id" ColumnName="BM_Id" />
+          <ScalarProperty Name="Urun_ID" ColumnName="Urun_ID" />
+          <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+          <ScalarProperty Name="Dig" ColumnName="Dig" />
+          <ScalarProperty Name="BirimDagitimOlcu" ColumnName="BirimDagitimOlcu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DagıtımOlcu">
+      <EntityTypeMapping TypeName="KuzeyMakModel.DagıtımOlcu">
+        <MappingFragment StoreEntitySet="DagıtımOlcu">
+          <ScalarProperty Name="DagıtımOlcu_Id" ColumnName="DagıtımOlcu_Id" />
+          <ScalarProperty Name="DagıtımOlcu_Ad" ColumnName="DagıtımOlcu_Ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DagitimOlcuFaaliyetiliski">
+      <EntityTypeMapping TypeName="KuzeyMakModel.DagitimOlcuFaaliyetiliski">
+        <MappingFragment StoreEntitySet="DagitimOlcuFaaliyetiliski">
+          <ScalarProperty Name="Df_Id" ColumnName="Df_Id" />
+          <ScalarProperty Name="DagitimOlcuId" ColumnName="DagitimOlcuId" />
+          <ScalarProperty Name="FaaliyetId" ColumnName="FaaliyetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Faaliyet">
+      <EntityTypeMapping TypeName="KuzeyMakModel.Faaliyet">
+        <MappingFragment StoreEntitySet="Faaliyet">
+          <ScalarProperty Name="FaaliyetId" ColumnName="FaaliyetId" />
+          <ScalarProperty Name="FaaliyetAd" ColumnName="FaaliyetAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gider">
+      <EntityTypeMapping TypeName="KuzeyMakModel.Gider">
+        <MappingFragment StoreEntitySet="Gider">
+          <ScalarProperty Name="GiderId" ColumnName="GiderId" />
+          <ScalarProperty Name="HesapKodu" ColumnName="HesapKodu" />
+          <ScalarProperty Name="HesapAd" ColumnName="HesapAd" />
+          <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KaynakMaliyetEtken">
+      <EntityTypeMapping TypeName="KuzeyMakModel.KaynakMaliyetEtken">
+        <MappingFragment StoreEntitySet="KaynakMaliyetEtken">
+          <ScalarProperty Name="KMEId" ColumnName="KMEId" />
+          <ScalarProperty Name="KMEAd" ColumnName="KMEAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maliyet">
+      <EntityTypeMapping TypeName="KuzeyMakModel.Maliyet">
+        <MappingFragment StoreEntitySet="Maliyet">
+          <ScalarProperty Name="MaliyetId" ColumnName="MaliyetId" />
+          <ScalarProperty Name="GiderId" ColumnName="GiderId" />
+          <ScalarProperty Name="FaaliyetId" ColumnName="FaaliyetId" />
+          <ScalarProperty Name="KMEId" ColumnName="KMEId" />
+          <ScalarProperty Name="Onay" ColumnName="Onay" />
+          <ScalarProperty Name="Adet" ColumnName="Adet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaliyetEndirektUretim">
+      <EntityTypeMapping TypeName="KuzeyMakModel.MaliyetEndirektUretim">
+        <MappingFragment StoreEntitySet="MaliyetEndirektUretim">
+          <ScalarProperty Name="EUM_Id" ColumnName="EUM_Id" />
+          <ScalarProperty Name="Urun_Id" ColumnName="Urun_Id" />
+          <ScalarProperty Name="Toplam" ColumnName="Toplam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaliyetUrun">
+      <EntityTypeMapping TypeName="KuzeyMakModel.MaliyetUrun">
+        <MappingFragment StoreEntitySet="MaliyetUrun">
+          <ScalarProperty Name="MaliyetUrunId" ColumnName="MaliyetUrunId" />
+          <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+          <ScalarProperty Name="DagitimOlcuId" ColumnName="DagitimOlcuId" />
+          <ScalarProperty Name="UrunDagitimAdet" ColumnName="UrunDagitimAdet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblBirimMaliyetTutar">
+      <EntityTypeMapping TypeName="KuzeyMakModel.TblBirimMaliyetTutar">
+        <MappingFragment StoreEntitySet="TblBirimMaliyetTutar">
+          <ScalarProperty Name="BMT_ID" ColumnName="BMT_ID" />
+          <ScalarProperty Name="Urunler" ColumnName="Urunler" />
+          <ScalarProperty Name="EndirekUM" ColumnName="EndirekUM" />
+          <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+          <ScalarProperty Name="Dig" ColumnName="Dig" />
+          <ScalarProperty Name="ToplamMaliyet" ColumnName="ToplamMaliyet" />
+          <ScalarProperty Name="BirimMaliyet" ColumnName="BirimMaliyet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblToplamMaliyet">
+      <EntityTypeMapping TypeName="KuzeyMakModel.TblToplamMaliyet">
+        <MappingFragment StoreEntitySet="TblToplamMaliyet">
+          <ScalarProperty Name="TMaliyet_ID" ColumnName="TMaliyet_ID" />
+          <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+          <ScalarProperty Name="EndirektToplami" ColumnName="EndirektToplami" />
+          <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+          <ScalarProperty Name="Dig" ColumnName="Dig" />
+          <ScalarProperty Name="ToplamMaliyeti" ColumnName="ToplamMaliyeti" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TutarUrunFaaliyet">
+      <EntityTypeMapping TypeName="KuzeyMakModel.TutarUrunFaaliyet">
+        <MappingFragment StoreEntitySet="TutarUrunFaaliyet">
+          <ScalarProperty Name="TUF_ID" ColumnName="TUF_ID" />
+          <ScalarProperty Name="Urun" ColumnName="Urun" />
+          <ScalarProperty Name="Faaliyet" ColumnName="Faaliyet" />
+          <ScalarProperty Name="TutarTUF" ColumnName="TutarTUF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Urun">
+      <EntityTypeMapping TypeName="KuzeyMakModel.Urun">
+        <MappingFragment StoreEntitySet="Urun">
+          <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+          <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BirimMaliyetTutar">
+      <EntityTypeMapping TypeName="KuzeyMakModel.BirimMaliyetTutar">
+        <MappingFragment StoreEntitySet="BirimMaliyetTutar">
+          <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+          <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+          <ScalarProperty Name="EndirektToplam" ColumnName="EndirektToplam" />
+          <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+          <ScalarProperty Name="Dig" ColumnName="Dig" />
+          <ScalarProperty Name="ToplamMaliyet" ColumnName="ToplamMaliyet" />
+          <ScalarProperty Name="BirimDagitimOlcu" ColumnName="BirimDagitimOlcu" />
+          <ScalarProperty Name="MaliyetUrunId" ColumnName="MaliyetUrunId" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="DagitimOlcuId" ColumnName="DagitimOlcuId" />
+          <ScalarProperty Name="UrunDagitimAdet" ColumnName="UrunDagitimAdet" />
+          <ScalarProperty Name="BirimMaliyet" ColumnName="BirimMaliyet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EndirektUretimMaliyeti">
+      <EntityTypeMapping TypeName="KuzeyMakModel.EndirektUretimMaliyeti">
+        <MappingFragment StoreEntitySet="EndirektUretimMaliyeti">
+          <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+          <ScalarProperty Name="Toplam" ColumnName="Toplam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GenelTutar">
+      <EntityTypeMapping TypeName="KuzeyMakModel.GenelTutar">
+        <MappingFragment StoreEntitySet="GenelTutar">
+          <ScalarProperty Name="MaliyetId" ColumnName="MaliyetId" />
+          <ScalarProperty Name="Oran" ColumnName="Oran" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="GiderId" ColumnName="GiderId" />
+          <ScalarProperty Name="FaaliyetAd" ColumnName="FaaliyetAd" />
+          <ScalarProperty Name="FaaliyetId" ColumnName="FaaliyetId" />
+          <ScalarProperty Name="KMEId" ColumnName="KMEId" />
+          <ScalarProperty Name="KMEAd" ColumnName="KMEAd" />
+          <ScalarProperty Name="Onay" ColumnName="Onay" />
+          <ScalarProperty Name="Adet" ColumnName="Adet" />
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+          <ScalarProperty Name="HesapKodu" ColumnName="HesapKodu" />
+          <ScalarProperty Name="HesapAd" ColumnName="HesapAd" />
+          <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+          <ScalarProperty Name="Geneltutar1" ColumnName="Geneltutar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Oran">
+      <EntityTypeMapping TypeName="KuzeyMakModel.Oran">
+        <MappingFragment StoreEntitySet="Oran">
+          <ScalarProperty Name="MaliyetId" ColumnName="MaliyetId" />
+          <ScalarProperty Name="Oran1" ColumnName="Oran" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OranUrunDagitim">
+      <EntityTypeMapping TypeName="KuzeyMakModel.OranUrunDagitim">
+        <MappingFragment StoreEntitySet="OranUrunDagitim">
+          <ScalarProperty Name="MaliyetUrunId" ColumnName="MaliyetUrunId" />
+          <ScalarProperty Name="oran" ColumnName="oran" />
+          <ScalarProperty Name="DagitimOlcuId" ColumnName="DagitimOlcuId" />
+          <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+          <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ToplamFaaliyetTutar">
+      <EntityTypeMapping TypeName="KuzeyMakModel.ToplamFaaliyetTutar">
+        <MappingFragment StoreEntitySet="ToplamFaaliyetTutar">
+          <ScalarProperty Name="FaaliyetId" ColumnName="FaaliyetId" />
+          <ScalarProperty Name="toplam" ColumnName="toplam" />
+          <ScalarProperty Name="FaaliyetAd" ColumnName="FaaliyetAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ToplamMaliyet">
+      <EntityTypeMapping TypeName="KuzeyMakModel.ToplamMaliyet">
+        <MappingFragment StoreEntitySet="ToplamMaliyet">
+          <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+          <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+          <ScalarProperty Name="EndirektToplam" ColumnName="EndirektToplam" />
+          <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+          <ScalarProperty Name="Dig" ColumnName="Dig" />
+          <ScalarProperty Name="ToplamMaliyet1" ColumnName="ToplamMaliyet" />
+          <ScalarProperty Name="BirimDagitimOlcu" ColumnName="BirimDagitimOlcu" />
+          <ScalarProperty Name="Urun_ID" ColumnName="Urun_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UrunFaaliyetTutar">
+      <EntityTypeMapping TypeName="KuzeyMakModel.UrunFaaliyetTutar">
+        <MappingFragment StoreEntitySet="UrunFaaliyetTutar">
+          <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+          <ScalarProperty Name="FaaliyetAd" ColumnName="FaaliyetAd" />
+          <ScalarProperty Name="FaaliyetId" ColumnName="FaaliyetId" />
+          <ScalarProperty Name="tutar" ColumnName="tutar" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="BirimMaliyetSP" FunctionName="KuzeyMakModel.Store.BirimMaliyetSP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KuzeyMakModel.BirimMaliyetSP_Result">
+          <ScalarProperty Name="BMT_ID" ColumnName="BMT_ID" />
+          <ScalarProperty Name="Urunler" ColumnName="Urunler" />
+          <ScalarProperty Name="EndirekUM" ColumnName="EndirekUM" />
+          <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+          <ScalarProperty Name="Dig" ColumnName="Dig" />
+          <ScalarProperty Name="ToplamMaliyet" ColumnName="ToplamMaliyet" />
+          <ScalarProperty Name="BirimMaliyet" ColumnName="BirimMaliyet" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ProductPrice" FunctionName="KuzeyMakModel.Store.ProductPrice">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KuzeyMakModel.ProductPrice_Result">
+          <ScalarProperty Name="TUF_ID" ColumnName="TUF_ID" />
+          <ScalarProperty Name="Urun" ColumnName="Urun" />
+          <ScalarProperty Name="Faaliyet" ColumnName="Faaliyet" />
+          <ScalarProperty Name="TutarTUF" ColumnName="TutarTUF" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPToplamMaliyet" FunctionName="KuzeyMakModel.Store.SPToplamMaliyet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KuzeyMakModel.SPToplamMaliyet_Result">
+          <ScalarProperty Name="TMaliyet_ID" ColumnName="TMaliyet_ID" />
+          <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+          <ScalarProperty Name="EndirektToplami" ColumnName="EndirektToplami" />
+          <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+          <ScalarProperty Name="Dig" ColumnName="Dig" />
+          <ScalarProperty Name="ToplamMaliyeti" ColumnName="ToplamMaliyeti" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="BirimMaliyetSP1" FunctionName="KuzeyMakModel.Store.BirimMaliyetSP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KuzeyMakModel.BirimMaliyetSP_Result">
+          <ScalarProperty Name="BMT_ID" ColumnName="BMT_ID" />
+          <ScalarProperty Name="Urunler" ColumnName="Urunler" />
+          <ScalarProperty Name="EndirekUM" ColumnName="EndirekUM" />
+          <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+          <ScalarProperty Name="Dig" ColumnName="Dig" />
+          <ScalarProperty Name="ToplamMaliyet" ColumnName="ToplamMaliyet" />
+          <ScalarProperty Name="BirimMaliyet" ColumnName="BirimMaliyet" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ProductPrice1" FunctionName="KuzeyMakModel.Store.ProductPrice">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KuzeyMakModel.ProductPrice_Result">
+          <ScalarProperty Name="TUF_ID" ColumnName="TUF_ID" />
+          <ScalarProperty Name="Urun" ColumnName="Urun" />
+          <ScalarProperty Name="Faaliyet" ColumnName="Faaliyet" />
+          <ScalarProperty Name="TutarTUF" ColumnName="TutarTUF" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPToplamMaliyet1" FunctionName="KuzeyMakModel.Store.SPToplamMaliyet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KuzeyMakModel.SPToplamMaliyet_Result">
+          <ScalarProperty Name="TMaliyet_ID" ColumnName="TMaliyet_ID" />
+          <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+          <ScalarProperty Name="EndirektToplami" ColumnName="EndirektToplami" />
+          <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+          <ScalarProperty Name="Dig" ColumnName="Dig" />
+          <ScalarProperty Name="ToplamMaliyeti" ColumnName="ToplamMaliyeti" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="BirimMaliyetSP2" FunctionName="KuzeyMakModel.Store.BirimMaliyetSP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KuzeyMakModel.BirimMaliyetSP_Result">
+          <ScalarProperty Name="BMT_ID" ColumnName="BMT_ID" />
+          <ScalarProperty Name="Urunler" ColumnName="Urunler" />
+          <ScalarProperty Name="EndirekUM" ColumnName="EndirekUM" />
+          <ScalarProperty Name="Dimmg" ColumnName="Dimmg" />
+          <ScalarProperty Name="Dig" ColumnName="Dig" />
+          <ScalarProperty Name="ToplamMaliyet" ColumnName="ToplamMaliyet" />
+          <ScalarProperty Name="BirimMaliyet" ColumnName="BirimMaliyet" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Endirekt" FunctionName="KuzeyMakModel.Store.Endirekt">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KuzeyMakModel.Endirekt_Result">
+          <ScalarProperty Name="EUM_Id" ColumnName="EUM_Id" />
+          <ScalarProperty Name="Urun_Id" ColumnName="Urun_Id" />
+          <ScalarProperty Name="Toplam" ColumnName="Toplam" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Endirekt1" FunctionName="KuzeyMakModel.Store.Endirekt">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KuzeyMakModel.Endirekt_Result">
+          <ScalarProperty Name="EUM_Id" ColumnName="EUM_Id" />
+          <ScalarProperty Name="Urun_Id" ColumnName="Urun_Id" />
+          <ScalarProperty Name="Toplam" ColumnName="Toplam" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

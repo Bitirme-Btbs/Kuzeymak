@@ -1,0 +1,30 @@
+﻿@using Bitirme.Models
+@model List<Oran>
+@{
+    ViewBag.Title = "Oran";
+}
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Maliyet Id</th>
+            <th scope="col">Oran</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MaliyetId </td>
+                <td>@item.Oran1 </td>
+                
+                                
+            </tr>
+        }
+    </tbody>
+</table>
+
+

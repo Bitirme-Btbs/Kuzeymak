@@ -1,0 +1,23 @@
+﻿@using Bitirme.Models
+@model KaynakMaliyetEtken
+@{
+    ViewBag.Title = "Details";
+}
+
+@using (Html.BeginForm("Edit", "KaynakMaliyetEtken", FormMethod.Post))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(ba => ba.KMEId)
+        @Html.TextBoxFor(ba => ba.KMEId)
+        <br />
+        @Html.LabelFor(ba => ba.KMEAd)
+        @Html.TextBoxFor(ba => ba.KMEAd)
+    </div>
+
+    <div>
+        <button class="btn btn-warning">Kaynak Maliyet Etkenleri Güncelle   </button>
+    </div>
+}
+
+
